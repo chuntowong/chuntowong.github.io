@@ -1,0 +1,116 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "autosize": {"type": "fit", "contains": "padding"},
+  "background": "#ffffff",
+  "padding": 5,
+  "height": 300,
+  "title": {
+    "text": "Imports of Egypt",
+    "anchor": "start",
+    "subtitle": "Current USD | Source: CAPMAS (WB) through ECO API",
+    "fontSize": 14,
+    "subtitleFontSize": 12,
+    "color": "#000000",
+    "subtitleColor": "#000000"
+  },
+  "style": "cell",
+  "encode": {
+    "update": {"fill": {"value": "#ffffff"}, "strokeOpacity": {"value": 0}}
+  },
+  "data": [
+    {
+      "name": "source_0",
+      "url": "https://api.economicsobservatory.com/egy/impo?vega",
+      "format": {"type": "json", "parse": {"date": "date"}},
+      "transform": [
+        {
+          "type": "stack",
+          "groupby": ["date"],
+          "field": "value",
+          "sort": {"field": [], "order": []},
+          "as": ["value_start", "value_end"],
+          "offset": "zero"
+        },
+        {
+          "type": "filter",
+          "expr": "(isDate(datum[\"date\"]) || (isValid(datum[\"date\"]) && isFinite(+datum[\"date\"]))) && isValid(datum[\"value\"]) && isFinite(+datum[\"value\"])"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "width",
+      "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+      "on": [
+        {
+          "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 300",
+          "events": "window:resize"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "name": "marks",
+      "type": "rect",
+      "style": ["bar"],
+      "from": {"data": "source_0"},
+      "encode": {
+        "update": {
+          "strokeWidth": {"value": "2"},
+          "fill": {"value": "#f4134d"},
+          "ariaRoleDescription": {"value": "bar"},
+          "description": {
+            "signal": "\"date: \" + (timeFormat(datum[\"date\"], \"%b %d, %Y\")) + \"; value: \" + (format(datum[\"value\"], \"\"))"
+          },
+          "xc": {"scale": "x", "field": "date"},
+          "width": {"value": 5},
+          "y": {"scale": "y", "field": "value_end"},
+          "y2": {"scale": "y", "field": "value_start"}
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "time",
+      "domain": {"data": "source_0", "field": "date"},
+      "range": [0, {"signal": "width"}],
+      "padding": 5
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": {"data": "source_0", "fields": ["value_start", "value_end"]},
+      "range": [{"signal": "height"}, 0],
+      "nice": true,
+      "zero": true
+    }
+  ],
+  "axes": [
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "grid": false,
+      "title": "Year",
+      "titleColor": "#122B39",
+      "labelFlush": true,
+      "labelOverlap": true,
+      "tickCount": {"signal": "ceil(width/40)"},
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "grid": false,
+      "title": "Value of Import",
+      "titleColor": "#122B39",
+      "labelOverlap": true,
+      "tickCount": {"signal": "ceil(height/40)"},
+      "zindex": 0
+    }
+  ],
+  "config": {}
+}
