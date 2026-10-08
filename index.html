@@ -49,7 +49,7 @@
     </h1>
     <p style="margin-top: 0px; color: darkblue">
         <!-- we're setting the margin to 0px so the header and authour name are close together -->
-        Chun To's Portfolio for PP434 | <a href="https://www.linkedin.com/in/chun-to-wong/">LinkedIn</a> | <a
+        Chun To's Week 1 Trial for PP434 | <a href="https://www.linkedin.com/in/chun-to-wong/">LinkedIn</a> | <a
             href="https://www.github.com/chuntowong">GitHub</a>
     </p>
     <h3 class="small"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
@@ -94,6 +94,28 @@
         <!-- This element will contain our vega-lite chart -->
         <figure id="Location3"></figure> 
 
+        <section>
+        <div class="chart-description">
+            <h2>Section 4: One more chart from the Chart Library</h2>
+            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
+                I have added another chart from the Chart Library here.  This is the chart on UK productivity and will be used as an sample for the two other charts I am going to add.
+            </p>
+        </div>
+
+        <!-- This element will contain our vega-lite chart -->
+        <figure id="Location4"></figure> 
+
+        <section>
+        <div class="chart-description">
+            <h2>Section 5: First chart that I made</h2>
+            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
+                Based on what we leart from the lecture on Week 2.  This is the chart on the decling birth date of Hong Kong.
+            </p>
+        </div>
+
+        <!-- This element will contain our vega-lite chart -->
+        <figure id="Location5"></figure> 
+
     </section>
 
     <!-- Do you want to add more sections? -->
@@ -123,6 +145,14 @@
         let figure_3_spec = "https://raw.githubusercontent.com/EconomicsObservatory/ECOvisualisations/refs/heads/main/articles/2021-04-14-a-year-in-the-uk-labour-market-whats-happened-over-the-coronavirus-pandemic/visualisation/fig1a_unemployment.json"; //
 
         vegaEmbed('#Location3', figure_3_spec) //
+
+        let figure_4_spec = "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartLine0.json"; //
+
+        vegaEmbed('#Location4', figure_4_spec) //
+
+        let figure_5_spec = "https://raw.githubusercontent.com/chuntowong/chuntowong.github.io/refs/heads/main/brithrate.json"; //
+
+        vegaEmbed('#Location5', figure_5_spec) //
 
     </script>
 
