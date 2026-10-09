@@ -116,6 +116,17 @@
         <!-- This element will contain our vega-lite chart -->
         <figure id="Location5"></figure> 
 
+        <section>
+        <div class="chart-description">
+            <h2>Section 6: The second chart I made</h2>
+            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
+                At the Seminar at Week 2, I made another chart on the TFR of UK.  This is rather stable.
+            </p>
+        </div>
+
+        <!-- This element will contain our vega-lite chart -->
+        <figure id="Location6"></figure> 
+
     </section>
 
     <!-- Do you want to add more sections? -->
@@ -153,6 +164,10 @@
         let figure_5_spec = "https://raw.githubusercontent.com/chuntowong/chuntowong.github.io/refs/heads/main/brithrate.json"; //
 
         vegaEmbed('#Location5', figure_5_spec) //
+
+        let figure_6_spec = "https://raw.githubusercontent.com/chuntowong/chuntowong.github.io/refs/heads/main/uktfr.json"; //
+
+        vegaEmbed('#Location6', figure_6_spec) //
 
     </script>
 
