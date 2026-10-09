@@ -1,0 +1,15 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/chuntowong/chuntowong.github.io/refs/heads/main/uktfr.csv"
+  },
+  "title": {"text": "Total Fertility Rates (TFR), UK, 1985 to 2014"},
+  "width": 600,
+  "height": 300,
+  "mark": {"type": "line", "color": "red"},
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal"},
+    "y": {"field": "TFR", "type": "quantitative"}
+  },
+  "config": {}
+}
